@@ -38,9 +38,10 @@ This repository contains the **Instructions App** built with Unity and designed 
 4. In the **Package Manager**, click on the "+" icon in the top left, then select **Add package from tarball** from the dropdown menu.
 5. Choose the **SnapdragonSpaces_Package.tgz** file from the **Snapdragon Spaces Unity SDK 1.0.0** folder.
 6. After importing, you will see a pop-up message. Select **Yes** to proceed.
-7. Head to the **Package Manager** (Window → Package Manager) again; this time, select the **QCHT Unity Interactions.tgz** file from the **Snapdragon Spaces Unity SDK** folder.
-8. After importing the **QCHT Unity Interactions** package, click the package in the **Package Manager**, head to **Samples** and download **Core Assets** and **QCHT Samples**.
-9. Follow the `Configuring XR Settings` instructions from [this article](https://developer.digilens.com/hc/en-us/articles/36241428293659-Developing-for-Snapdragon-Spaces-1-0-1#h_01JF93CTK84V4FPSYS8Y8QEB31) for an easier configuration process.
+7. Click the **Snapdragon Spaces** package in the **Package Manager**, head to **Samples** and import **Core Samples**.
+8. Head to the **Package Manager** (Window → Package Manager) again; this time, select the **QCHT Unity Interactions.tgz** file from the **Snapdragon Spaces Unity SDK** folder.
+9. After importing the **QCHT Unity Interactions** package, click the package in the **Package Manager**, head to **Samples** and import **Core Assets** and **QCHT Samples**.
+10. Follow the `Configuring XR Settings` instructions from [this article](https://developer.digilens.com/hc/en-us/articles/36241428293659-Developing-for-Snapdragon-Spaces-1-0-1#h_01JF93CTK84V4FPSYS8Y8QEB31) for an easier configuration process.
 
 You’ve now installed and set up the required packages.
 
@@ -49,15 +50,8 @@ You’ve now installed and set up the required packages.
 ## Verifying the QCHT Control Box Script
 
 1. In **Hierarchy**, select the `Instruction Panels` object.
-2. In the **Inspector**, check for the `QCHT Control Box (Script)` component with the following fields:
-   - `Control Box Customization`
-   - `Control Box Scales and Colors`
-   - `Position Offset`
-   - `State Customization`
-
-If these are missing:
-
-- Edit `QCHTControlBox.cs`:
+2. In the **Inspector**, check for the `QCHT Control Box (Script)` component.
+3. Edit `QCHTControlBox.cs`:
   - Locate the following line:
 
     ```csharp
@@ -128,8 +122,8 @@ If these are missing:
     EditorGUILayout.PropertyField(_scaleProperty, new GUIContent("Scale"));
     EditorGUILayout.PropertyField(_positionOffsetProperty, new GUIContent("Position Offset"));
     ```
-3. Save the script and return to Unity.
-4. Select `Instruction Panels` and confirm the fields are visible and correct.
+4. Save the script and return to Unity.
+5. Select `Instruction Panels` and confirm the fields are visible and correct.
 
 ![Instructions App Preview](Assets/Repository/repo_image.png)
 
