@@ -51,7 +51,8 @@ You’ve now installed and set up the required packages.
 
 1. In **Hierarchy**, select the `Instruction Panels` object.
 2. In the **Inspector**, check for the `QCHT Control Box (Script)` component.
-3. Edit `QCHTControlBox.cs`:
+3. For the `Settings` field, choose `ControlBoxSettings (QCHT Control Box Settings)`
+4. Edit `QCHTControlBox.cs`:
   - Locate the following line:
 
     ```csharp
