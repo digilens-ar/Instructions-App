@@ -30,17 +30,19 @@ This repository contains the **Instructions App** built with Unity and designed 
 
 ---
 
-## Installing QCHT & Snapdragon Spaces SDKs
+## Installing Snapdragon Spaces
 
 1. Open the project in Unity Hub.
 2. Ignore any compilation/plugin errors.
-3. Go to **Window → Package Manager**.
-4. Click **+** → **Add package from tarball**:
-   - Import `SnapdragonSpaces_Package.tgz` from the SDK ZIP.
-   - Confirm import if prompted.
-5. Repeat to import `QCHT_Interactions.tgz`.
+3. Once the project file has been opened, head to the **Package Manager** (Window → Package Manager)
+4. In the **Package Manager**, click on the "+" icon in the top left, then select **Add package from tarball** from the dropdown menu.
+5. Choose the **SnapdragonSpaces_Package.tgz** file from the **Snapdragon Spaces Unity SDK 1.0.0** folder.
+6. After importing, you will see a pop-up message. Select **Yes** to proceed.
+7. Head to the **Package Manager** (Window → Package Manager) again; this time, select the **QCHT Unity Interactions.tgz** file from the **Snapdragon Spaces Unity SDK** folder.
+8. After importing the **QCHT Unity Interactions** package, click the package in the **Package Manager**, head to **Samples** and download **Core Assets** and **QCHT Samples**.
+9. Follow the `Configuring XR Settings` instructions from [this article](https://developer.digilens.com/hc/en-us/articles/36241428293659-Developing-for-Snapdragon-Spaces-1-0-1#h_01JF93CTK84V4FPSYS8Y8QEB31) for an easier configuration process.
 
-You’ve now installed both required packages.
+You’ve now installed and set up the required packages.
 
 ---
 
