@@ -34,16 +34,23 @@ This repository contains the **Instructions App** built with Unity and designed 
 
 1. Open the project in Unity Hub.
 2. Ignore any compilation/plugin errors.
-3. Once the project file has been opened, head to the **Package Manager** (Window → Package Manager)
+3. Once the project file has been opened, head to the **Package Manager** (Window → Package Manager).
 4. In the **Package Manager**, click on the "+" icon in the top left, then select **Add package from tarball** from the dropdown menu.
 5. Choose the **SnapdragonSpaces_Package.tgz** file from the **Snapdragon Spaces Unity SDK 1.0.0** folder.
 6. After importing, you will see a pop-up message. Select **Yes** to proceed.
 7. Click the **Snapdragon Spaces** package in the **Package Manager**, head to **Samples** and import **Core Samples**.
 8. Head to the **Package Manager** (Window → Package Manager) again; this time, select the **QCHT Unity Interactions.tgz** file from the **Snapdragon Spaces Unity SDK** folder.
 9. After importing the **QCHT Unity Interactions** package, click the package in the **Package Manager**, head to **Samples** and import **Core Assets** and **QCHT Samples**.
-10. Follow the `Configuring XR Settings` instructions from [this article](https://developer.digilens.com/hc/en-us/articles/36241428293659-Developing-for-Snapdragon-Spaces-1-0-1#h_01JF93CTK84V4FPSYS8Y8QEB31) for an easier configuration process.
 
-You’ve now installed and set up the required packages.
+You’ve now installed the required packages.
+
+---
+
+## Verify OpenXR Settings
+
+1. Follow the `Configuring XR Settings` instructions from [this article](https://developer.digilens.com/hc/en-us/articles/36241428293659-Developing-for-Snapdragon-Spaces-1-0-1#h_01JF93CTK84V4FPSYS8Y8QEB31) for an easier configuration process.
+2. Open the OpenXR Settings (Edit → Project Settings → XR Plugin-In Management → OpenXR)
+3. Ensure `Base Runtime` and `Hand Tracking` are enabled.
 
 ---
 
@@ -112,19 +119,46 @@ You’ve now installed and set up the required packages.
   - Inside the function, locate this line:
  
     ```csharp
-    EditorGUILayout.PropertyField(_settingsProperty);
+    GUILayout.Space(10);
     ```
 
   - Directly below that line, insert the following:
  
     ```csharp
-    GUILayout.Space(10);
     EditorGUILayout.LabelField("Control Box Customization", EditorStyles.boldLabel);
     EditorGUILayout.PropertyField(_scaleProperty, new GUIContent("Scale"));
     EditorGUILayout.PropertyField(_positionOffsetProperty, new GUIContent("Position Offset"));
     ```
-4. Save the script and return to Unity.
-5. Select `Instruction Panels` and confirm the fields are visible and correct.
+
+  - Locate this part in the script:
+
+    ```csharp
+    public void OnEnable()
+    {
+    _settingsProperty = serializedObject.FindProperty("settings");
+    }
+    ```
+
+  - Replace it with this:
+
+    ```csharp
+    public void OnEnable()
+    {
+    _settingsProperty = serializedObject.FindProperty("settings");
+    _scaleProperty = serializedObject.FindProperty("controlBoxScale");
+    _positionOffsetProperty = serializedObject.FindProperty("controlBoxPositionOffset");
+    }
+    ```
+    
+  - Below `private SerializedProperty _settingsProperty;` add:
+
+    ```csharp
+    private SerializedProperty _scaleProperty;
+    private SerializedProperty _positionOffsetProperty;
+    ```
+    
+5. Save the script and return to Unity.
+6. Select `Instruction Panels` and confirm the fields are visible and adjust the values accordingly:
 
 ![Instructions App Preview](Assets/Repository/repo_image.png)
 
