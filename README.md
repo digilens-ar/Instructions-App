@@ -71,8 +71,8 @@ You’ve now installed the required packages.
 
   ```csharp
   [Header("Control Box Customization")]
-  [SerializeField] private Vector3 controlBoxScale = Vector3.one;
-  [SerializeField] private Vector3 controlBoxPositionOffset = Vector3.zero;
+  [SerializeField] private UnityEngine.Vector3 controlBoxScale = UnityEngine.Vector3.one;
+  [SerializeField] private UnityEngine.Vector3 controlBoxPositionOffset = UnityEngine.Vector3.zero;
   ```
 
 - Below `private SerializedProperty _settingsProperty;` add:
