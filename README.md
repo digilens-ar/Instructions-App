@@ -60,103 +60,103 @@ You’ve now installed the required packages.
 2. In the **Inspector**, check for the `QCHT Control Box (Script)` component.
 3. For the `Settings` field, choose `ControlBoxSettings (QCHT Control Box Settings)`
 4. Edit `QCHTControlBox.cs`:
+   
   - Locate the following line:
 
-    ```csharp
-    [SerializeField] private QCHTControlBoxSettings settings;
-    ```
+  ```csharp
+  [SerializeField] private QCHTControlBoxSettings settings;
+  ```
 
-  - Add the following lines directly below it:
+- Add the following lines directly below it:
 
-    ```csharp
-    [Header("Control Box Customization")]
-    [SerializeField] private Vector3 controlBoxScale = Vector3.one;
-    [SerializeField] private Vector3 controlBoxPositionOffset = Vector3.zero;
-    ```
+  ```csharp
+  [Header("Control Box Customization")]
+  [SerializeField] private Vector3 controlBoxScale = Vector3.one;
+  [SerializeField] private Vector3 controlBoxPositionOffset = Vector3.zero;
+  ```
 
-  - Locate the function:
+- Below `private SerializedProperty _settingsProperty;` add:
 
-    ```csharp
-    private bool TryToLoadGrid(out XRInteractionGrid grid)
-    ```
+  ```csharp
+  private SerializedProperty _scaleProperty;
+  private SerializedProperty _positionOffsetProperty;
+  ```
 
-  - Find these lines:
+- Locate this part in the script:
 
-    ```csharp
-    var test = t.rotation * bounds.size;
-    var scale = settings ? Vector3.one * settings.ScaleOffset : Vector3.one;
-    gridObject.transform.localScale = Vector3Extensions.Abs(test.Divide(t.lossyScale)) + scale;
-    gridObject.transform.localPosition = t.InverseTransformPoint(bounds.center);
-    ```
+  ```csharp
+  public void OnEnable()
+  {
+      _settingsProperty = serializedObject.FindProperty("settings");
+  }
+  ```
 
-  - Replace them with:
+- Replace it with:
 
-    ```csharp
-    gridObject.transform.localScale = controlBoxScale;
-    gridObject.transform.localPosition = t.InverseTransformPoint(bounds.center) + controlBoxPositionOffset;
-    ```
+  ```csharp
+  public void OnEnable()
+  {
+      _settingsProperty = serializedObject.FindProperty("settings");
+      _scaleProperty = serializedObject.FindProperty("controlBoxScale");
+      _positionOffsetProperty = serializedObject.FindProperty("controlBoxPositionOffset");
+  }
+  ```
 
-  - Scroll to the bottom of the script. Before the `#if UNITY_EDITOR` section, add:
- 
-    ```csharp
-    private void OnDrawGizmos()
-    {
+- Locate the function:
+
+  ```csharp
+  private bool TryToLoadGrid(out XRInteractionGrid grid)
+  ```
+
+- Find these lines inside the function:
+
+  ```csharp
+  var test = t.rotation * bounds.size;
+  var scale = settings ? Vector3.one * settings.ScaleOffset : Vector3.one;
+  gridObject.transform.localScale = Vector3Extensions.Abs(test.Divide(t.lossyScale)) + scale;
+  gridObject.transform.localPosition = t.InverseTransformPoint(bounds.center);
+  ```
+
+- Replace them with:
+
+  ```csharp
+  gridObject.transform.localScale = controlBoxScale;
+  gridObject.transform.localPosition = t.InverseTransformPoint(bounds.center) + controlBoxPositionOffset;
+  ```
+
+- Scroll to the bottom of the script. Before the `#if UNITY_EDITOR` section, add:
+
+  ```csharp
+  private void OnDrawGizmos()
+  {
       if (!Application.isPlaying)
-        {
+      {
           Gizmos.color = Color.green;
           Vector3 boxCenter = transform.position + controlBoxPositionOffset;
           Gizmos.DrawWireCube(boxCenter, controlBoxScale);
-        }
-    }
-    ```
-    
-  - Locate the function:
- 
-    ```csharp
-    public override void OnInspectorGUI()
-    ```
+      }
+  }
+  ```
 
-  - Inside the function, locate this line:
- 
-    ```csharp
-    GUILayout.Space(10);
-    ```
+- Locate the function:
 
-  - Directly below that line, insert the following:
- 
-    ```csharp
-    EditorGUILayout.LabelField("Control Box Customization", EditorStyles.boldLabel);
-    EditorGUILayout.PropertyField(_scaleProperty, new GUIContent("Scale"));
-    EditorGUILayout.PropertyField(_positionOffsetProperty, new GUIContent("Position Offset"));
-    ```
+  ```csharp
+  public override void OnInspectorGUI()
+  ```
 
-  - Locate this part in the script:
+- Inside the function, locate this line:
 
-    ```csharp
-    public void OnEnable()
-    {
-    _settingsProperty = serializedObject.FindProperty("settings");
-    }
-    ```
+  ```csharp
+  GUILayout.Space(10);
+  ```
 
-  - Replace it with this:
+- Directly below that line, insert the following:
 
-    ```csharp
-    public void OnEnable()
-    {
-    _settingsProperty = serializedObject.FindProperty("settings");
-    _scaleProperty = serializedObject.FindProperty("controlBoxScale");
-    _positionOffsetProperty = serializedObject.FindProperty("controlBoxPositionOffset");
-    }
-    ```
-    
-  - Below `private SerializedProperty _settingsProperty;` add:
-
-    ```csharp
-    private SerializedProperty _scaleProperty;
-    private SerializedProperty _positionOffsetProperty;
-    ```
-    
+  ```csharp
+  EditorGUILayout.LabelField("Control Box Customization", EditorStyles.boldLabel);
+  EditorGUILayout.PropertyField(_scaleProperty, new GUIContent("Scale"));
+  EditorGUILayout.PropertyField(_positionOffsetProperty, new GUIContent("Position Offset"));
+  ```    
 5. Save the script and return to Unity.
 6. Select `Instruction Panels` and confirm the fields are visible and adjust the values accordingly:
 
