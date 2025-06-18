@@ -132,7 +132,7 @@ You’ve now installed the required packages.
       if (!Application.isPlaying)
       {
           Gizmos.color = Color.green;
-          Vector3 boxCenter = transform.position + controlBoxPositionOffset;
+          UnityEngine.Vector3 boxCenter = transform.position + controlBoxPositionOffset;
           Gizmos.DrawWireCube(boxCenter, controlBoxScale);
       }
   }
