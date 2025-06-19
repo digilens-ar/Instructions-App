@@ -18,9 +18,9 @@ This repository contains the **Instructions App** built with Unity and designed 
 1. Open **Unity Hub**.
 2. Go to the **Installs** tab.
 3. If not installed, download **Unity Editor 2022.3.45f1** from the [Unity Download Archive](https://unity.com/releases/editor/archive).
-4. In the Instructions App GitHub repositor:
+4. In the Instructions App GitHub repository:
 - Click the green **Code** button:
-  - Use **Open with GitHub Desktop**, or
+- Use **Open with GitHub Desktop**, or
   - Select **Download ZIP** and extract manually.
 5. Back in Unity Hub, head to the **Projets** tab and click **Add** → **Add project from disk**, and select the cloned/extracted repository folder.
 
