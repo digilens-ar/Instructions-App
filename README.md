@@ -118,7 +118,7 @@ You’ve now installed the required packages.
   private SerializedProperty _positionOffsetProperty;
   ```
 
-  - Locate this part in the script:
+- Locate this part in the script:
 
   ```csharp
   public void OnEnable()
