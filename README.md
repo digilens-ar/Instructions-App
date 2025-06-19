@@ -75,26 +75,6 @@ You’ve now installed the required packages.
   [SerializeField] private UnityEngine.Vector3 controlBoxPositionOffset = UnityEngine.Vector3.zero;
   ```
 
-- Locate this part in the script:
-
-  ```csharp
-  public void OnEnable()
-  {
-      _settingsProperty = serializedObject.FindProperty("settings");
-  }
-  ```
-
-- Replace it with:
-
-  ```csharp
-  public void OnEnable()
-  {
-      _settingsProperty = serializedObject.FindProperty("settings");
-      _scaleProperty = serializedObject.FindProperty("controlBoxScale");
-      _positionOffsetProperty = serializedObject.FindProperty("controlBoxPositionOffset");
-  }
-  ```
-
 - Locate the function:
 
   ```csharp
@@ -136,6 +116,26 @@ You’ve now installed the required packages.
   ```csharp
   private SerializedProperty _scaleProperty;
   private SerializedProperty _positionOffsetProperty;
+  ```
+
+  - Locate this part in the script:
+
+  ```csharp
+  public void OnEnable()
+  {
+      _settingsProperty = serializedObject.FindProperty("settings");
+  }
+  ```
+
+- Replace it with:
+
+  ```csharp
+  public void OnEnable()
+  {
+      _settingsProperty = serializedObject.FindProperty("settings");
+      _scaleProperty = serializedObject.FindProperty("controlBoxScale");
+      _positionOffsetProperty = serializedObject.FindProperty("controlBoxPositionOffset");
+  }
   ```
 
 - Locate the function:
