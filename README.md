@@ -75,13 +75,6 @@ You’ve now installed the required packages.
   [SerializeField] private UnityEngine.Vector3 controlBoxPositionOffset = UnityEngine.Vector3.zero;
   ```
 
-- Below `private SerializedProperty _settingsProperty;` add:
-
-  ```csharp
-  private SerializedProperty _scaleProperty;
-  private SerializedProperty _positionOffsetProperty;
-  ```
-
 - Locate this part in the script:
 
   ```csharp
@@ -136,6 +129,13 @@ You’ve now installed the required packages.
           Gizmos.DrawWireCube(boxCenter, controlBoxScale);
       }
   }
+  ```
+
+- Below `private SerializedProperty _settingsProperty;` add:
+
+  ```csharp
+  private SerializedProperty _scaleProperty;
+  private SerializedProperty _positionOffsetProperty;
   ```
 
 - Locate the function:
