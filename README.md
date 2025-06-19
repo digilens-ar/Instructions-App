@@ -57,7 +57,7 @@ You’ve now installed the required packages.
 3. For the `Settings` field, choose `ControlBoxSettings (QCHT Control Box Settings)`
 4. Edit `QCHTControlBox.cs`:
    
-  - Locate the following line:
+- Locate the following line (line 23):
 
   ```csharp
   [SerializeField] private QCHTControlBoxSettings settings;
@@ -71,13 +71,13 @@ You’ve now installed the required packages.
   [SerializeField] private UnityEngine.Vector3 controlBoxPositionOffset = UnityEngine.Vector3.zero;
   ```
 
-- Locate the function:
+- Locate the function (line 89):
 
   ```csharp
   private bool TryToLoadGrid(out XRInteractionGrid grid)
   ```
 
-- Find these lines inside the function:
+- Find these lines inside the function (lines 105-108):
 
   ```csharp
   var test = t.rotation * bounds.size;
@@ -93,7 +93,7 @@ You’ve now installed the required packages.
   gridObject.transform.localPosition = t.InverseTransformPoint(bounds.center) + controlBoxPositionOffset;
   ```
 
-- Scroll to the bottom of the script. Before the `#if UNITY_EDITOR` section, add:
+- Scroll to the bottom of the script. Before the `#if UNITY_EDITOR` section (starting in line 112), add:
 
   ```csharp
   private void OnDrawGizmos()
@@ -107,14 +107,14 @@ You’ve now installed the required packages.
   }
   ```
 
-- Below `private SerializedProperty _settingsProperty;` add:
+- Below `private SerializedProperty _settingsProperty;` (line 126) add:
 
   ```csharp
   private SerializedProperty _scaleProperty;
   private SerializedProperty _positionOffsetProperty;
   ```
 
-- Locate this part in the script:
+- Locate this part in the script (lines 131-134):
 
   ```csharp
   public void OnEnable()
@@ -134,13 +134,13 @@ You’ve now installed the required packages.
   }
   ```
 
-- Locate the function:
+- Locate the function (line 138):
 
   ```csharp
   public override void OnInspectorGUI()
   ```
 
-- Inside the function, locate this line:
+- Inside the function, locate this line (line 142):
 
   ```csharp
   GUILayout.Space(10);
