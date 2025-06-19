@@ -24,6 +24,8 @@ This repository contains the **Instructions App** built with Unity and designed 
   - Select **Download ZIP** and extract manually.
 5. Back in Unity Hub, head to the **Projets** tab and click **Add** → **Add project from disk**, and select the cloned/extracted repository folder.
 
+The project has now been added to the Unity Hub and is ready to be opened.
+
 ---
 
 ## Installing Snapdragon Spaces
